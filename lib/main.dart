@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:single_data_api/multiple/screen_with_model.dart';
-import 'package:single_data_api/single/screen_without_model.dart';
+import 'package:single_data_api/multiple/screen_without_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ScreenWithModel(),
+      home: ScreenWithoutModel(),
     );
   }
 }

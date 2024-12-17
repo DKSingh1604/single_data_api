@@ -1,26 +1,25 @@
-//LIST OR MULTIPLE API
-
 import 'package:flutter/material.dart';
 import 'package:single_data_api/multiple/api_services.dart';
-import 'package:single_data_api/multiple/post_model.dart';
 
-class ScreenWithModel extends StatefulWidget {
-  const ScreenWithModel({super.key});
+class ScreenWithoutModel extends StatefulWidget {
+  const ScreenWithoutModel({super.key});
 
   @override
-  State<ScreenWithModel> createState() => _ScreenWithModelState();
+  State<ScreenWithoutModel> createState() => _ScreenWithoutModelState();
 }
 
-class _ScreenWithModelState extends State<ScreenWithModel> {
+class _ScreenWithoutModelState extends State<ScreenWithoutModel> {
   bool isReady = false;
-  List<PostModel> postModel = [];
+  dynamic postList = [];
   _getPost() {
     isReady = true;
-    ListApiServices().getPostWithModel().then((value) {
+    ListApiServices().getPostWithoutModel().then((value) {
       setState(() {
-        postModel = value!;
+        postList = value;
         isReady = false;
       });
+    }).onError((error, stackTrace) {
+      print(error);
     });
   }
 
@@ -34,27 +33,26 @@ class _ScreenWithModelState extends State<ScreenWithModel> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text("Multiple Post without Model"),
         centerTitle: true,
-        title: Text("Post with Model"),
       ),
       body: isReady == true
           ? Center(
-              child: CircularProgressIndicator.adaptive(),
+              child: CircularProgressIndicator(),
             )
           : ListView.builder(
-              itemCount: postModel.length,
+              itemCount: postList.length,
               itemBuilder: (context, index) {
                 return Card(
                   child: ListTile(
                     leading: Text(
-                      postModel[index].id.toString(),
+                      postList[index]["id"].toString(),
                       style: TextStyle(color: Colors.red, fontSize: 20),
                     ),
-                    title: Text(
-                      postModel[index].title.toString(),
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    title: Text(postList[index]["title"].toString()),
+                    subtitle: Text(
+                      postList[index]["body"].toString(),
                     ),
-                    subtitle: Text(postModel[index].body.toString()),
                   ),
                 );
               },
