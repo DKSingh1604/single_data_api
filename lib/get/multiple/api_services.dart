@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:single_data_api/multiple/post_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:single_data_api/get/multiple/post_model.dart';
 
 class ListApiServices {
   Future<List<PostModel>?> getPostWithModel() async {

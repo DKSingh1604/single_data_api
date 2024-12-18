@@ -1,8 +1,8 @@
 //SINGLE DATA WITH MODEL
 
 import 'package:flutter/material.dart';
-import 'package:single_data_api/single/api_services.dart';
-import 'package:single_data_api/single/single_post_model.dart';
+import 'package:single_data_api/get/single/api_services.dart';
+import 'package:single_data_api/get/single/single_post_model.dart';
 
 class ScreenWithModel extends StatefulWidget {
   const ScreenWithModel({super.key});

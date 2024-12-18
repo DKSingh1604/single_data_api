@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:single_data_api/mixed/api_services.dart';
+import 'package:single_data_api/get/mixed/api_services.dart';
 
 class ScreenWithoutModel extends StatefulWidget {
   const ScreenWithoutModel({super.key});

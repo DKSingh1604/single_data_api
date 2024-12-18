@@ -1,8 +1,8 @@
 //LIST OR MULTIPLE API
 
 import 'package:flutter/material.dart';
-import 'package:single_data_api/multiple/api_services.dart';
-import 'package:single_data_api/multiple/post_model.dart';
+import 'package:single_data_api/get/multiple/api_services.dart';
+import 'package:single_data_api/get/multiple/post_model.dart';
 
 class ScreenWithModel extends StatefulWidget {
   const ScreenWithModel({super.key});

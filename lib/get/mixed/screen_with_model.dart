@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:single_data_api/mixed/api_services.dart';
-import 'package:single_data_api/mixed/multi_data_model.dart';
+import 'package:single_data_api/get/mixed/api_services.dart';
+import 'package:single_data_api/get/mixed/multi_data_model.dart';
 
 class ScreenWithModel extends StatefulWidget {
   const ScreenWithModel({super.key});

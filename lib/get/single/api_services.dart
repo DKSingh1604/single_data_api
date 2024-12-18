@@ -2,8 +2,8 @@
 
 import 'dart:convert';
 
-import 'package:single_data_api/single/single_post_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:single_data_api/get/single/single_post_model.dart';
 
 class SingleApiServices {
   //With model

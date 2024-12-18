@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:single_data_api/mixed/multi_data_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:single_data_api/get/mixed/multi_data_model.dart';
 
 class ApiServices {
   //with model

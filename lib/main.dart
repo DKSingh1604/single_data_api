@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:single_data_api/get/mixed/screen_without_model.dart';
+import 'package:single_data_api/post/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ScreenWithoutModel(),
+      home: LoginScreen(),
     );
   }
 }
