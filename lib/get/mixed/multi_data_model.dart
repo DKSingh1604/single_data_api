@@ -22,24 +22,24 @@ class MultiData {
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(Data.fromJson(v));
       });
     }
     support =
-        json['support'] != null ? new Support.fromJson(json['support']) : null;
+        json['support'] != null ? Support.fromJson(json['support']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['page'] = this.page;
-    data['per_page'] = this.perPage;
-    data['total'] = this.total;
-    data['total_pages'] = this.totalPages;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['page'] = page;
+    data['per_page'] = perPage;
+    data['total'] = total;
+    data['total_pages'] = totalPages;
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
-    if (this.support != null) {
-      data['support'] = this.support!.toJson();
+    if (support != null) {
+      data['support'] = support!.toJson();
     }
     return data;
   }
@@ -63,12 +63,12 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['year'] = this.year;
-    data['color'] = this.color;
-    data['pantone_value'] = this.pantoneValue;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['year'] = year;
+    data['color'] = color;
+    data['pantone_value'] = pantoneValue;
     return data;
   }
 }
@@ -85,9 +85,9 @@ class Support {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['url'] = this.url;
-    data['text'] = this.text;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['url'] = url;
+    data['text'] = text;
     return data;
   }
 }

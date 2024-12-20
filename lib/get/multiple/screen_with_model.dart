@@ -35,10 +35,10 @@ class _ScreenWithModelState extends State<ScreenWithModel> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Post with Model"),
+        title: const Text("Post with Model"),
       ),
       body: isReady == true
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator.adaptive(),
             )
           : ListView.builder(
@@ -48,11 +48,11 @@ class _ScreenWithModelState extends State<ScreenWithModel> {
                   child: ListTile(
                     leading: Text(
                       postModel[index].id.toString(),
-                      style: TextStyle(color: Colors.red, fontSize: 20),
+                      style: const TextStyle(color: Colors.red, fontSize: 20),
                     ),
                     title: Text(
                       postModel[index].title.toString(),
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(postModel[index].body.toString()),
                   ),

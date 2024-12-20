@@ -51,7 +51,7 @@ class _ScreenWithoutModelState extends State<ScreenWithoutModel> {
                     Text(singlePost['userId'].toString()),
                     Text(
                       singlePost['title'].toString(),
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text(singlePost['body'].toString()),
                   ],

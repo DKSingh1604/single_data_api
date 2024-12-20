@@ -41,10 +41,10 @@ class _ScreenWithModelState extends State<ScreenWithModel> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Single"),
+        title: const Text("Single"),
       ),
       body: isReady == true
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : Padding(
@@ -54,17 +54,16 @@ class _ScreenWithModelState extends State<ScreenWithModel> {
                 children: [
                   Text(
                     singlePostWithModel.userId.toString(),
-                    style: TextStyle(fontSize: 20, color: Colors.blue),
+                    style: const TextStyle(fontSize: 20, color: Colors.blue),
                   ),
                   Text(
                     singlePostWithModel.title.toString(),
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: const Color.fromARGB(255, 233, 33, 243)),
+                    style: const TextStyle(
+                        fontSize: 16, color: Color.fromARGB(255, 233, 33, 243)),
                   ),
                   Text(
                     singlePostWithModel.body.toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 13,
                     ),
                   ),

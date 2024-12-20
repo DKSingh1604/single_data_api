@@ -1,11 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:single_data_api/header/home_screen.dart';
+import 'package:single_data_api/home_page.dart';
+// import 'package:single_data_api/header/home_screen.dart';
 // import 'package:single_data_api/get/mixed/screen_without_model.dart';
-import 'package:single_data_api/post/login_screen.dart';
+// import 'package:single_data_api/post/login_screen.dart';
 // import 'package:single_data_api/post_register.dart/home_screen.dart';
-import 'package:single_data_api/post_register.dart/model.dart';
+// import 'package:single_data_api/post_register.dart/model.dart';
 // import 'package:single_data_api/post_create_job/home_screen.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: HomePage(),
     );
   }
 }

@@ -33,11 +33,11 @@ class _ScreenWithoutModelState extends State<ScreenWithoutModel> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Multiple Post without Model"),
+        title: const Text("Multiple Post without Model"),
         centerTitle: true,
       ),
       body: isReady == true
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : ListView.builder(
@@ -47,7 +47,7 @@ class _ScreenWithoutModelState extends State<ScreenWithoutModel> {
                   child: ListTile(
                     leading: Text(
                       postList[index]["id"].toString(),
-                      style: TextStyle(color: Colors.red, fontSize: 20),
+                      style: const TextStyle(color: Colors.red, fontSize: 20),
                     ),
                     title: Text(postList[index]["title"].toString()),
                     subtitle: Text(

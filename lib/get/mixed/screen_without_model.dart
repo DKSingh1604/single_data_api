@@ -37,22 +37,22 @@ class _ScreenWithoutModelState extends State<ScreenWithoutModel> {
         centerTitle: true,
       ),
       body: isReady == true
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : Column(
               children: [
                 Text(
-                  "Page - " + multiData["page"].toString(),
-                  style: TextStyle(color: Colors.red, fontSize: 20),
+                  "Page - ${multiData["page"]}",
+                  style: const TextStyle(color: Colors.red, fontSize: 20),
                 ),
                 Text(
-                  "Total - " + multiData["total"].toString(),
-                  style: TextStyle(color: Colors.red, fontSize: 20),
+                  "Total - ${multiData["total"]}",
+                  style: const TextStyle(color: Colors.red, fontSize: 20),
                 ),
                 Text(
-                  "Total Pages - " + multiData["total_pages"].toString(),
-                  style: TextStyle(color: Colors.red, fontSize: 20),
+                  "Total Pages - ${multiData["total_pages"]}",
+                  style: const TextStyle(color: Colors.red, fontSize: 20),
                 ),
                 Expanded(
                   child: ListView.builder(
@@ -62,8 +62,8 @@ class _ScreenWithoutModelState extends State<ScreenWithoutModel> {
                         child: ListTile(
                           leading: Text(
                             multiData["data"][index]["id"].toString(),
-                            style:
-                                TextStyle(backgroundColor: Colors.amberAccent),
+                            style: const TextStyle(
+                                backgroundColor: Colors.amberAccent),
                           ),
                           title: Text(
                             multiData["data"][index]["name"],

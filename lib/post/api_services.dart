@@ -18,6 +18,7 @@ class ApiServices {
     } catch (e) {
       print(e.toString());
     }
+    return null;
   }
 
   //WITHOUT MODEL
