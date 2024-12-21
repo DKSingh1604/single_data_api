@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:single_data_api/home_page.dart';
+import 'package:single_data_api/20December2024/get_api/screens/employee_screen.dart';
 // import 'package:single_data_api/header/home_screen.dart';
 // import 'package:single_data_api/get/mixed/screen_without_model.dart';
 // import 'package:single_data_api/post/login_screen.dart';
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: EmployeeScreen(),
     );
   }
 }
