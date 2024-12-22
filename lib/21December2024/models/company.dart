@@ -17,9 +17,9 @@ class Company {
   Company.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     companyLogo = json['logo'];
-    companyName = json['name'];
-    companyNumber = json['phone'];
-    companyAddress = json['address'];
+    companyName = json['Name'] ?? json['name'];
+    companyNumber = json['phone'].toString();
+    companyAddress = json['Address'] ?? json['address'];
   }
 
   //method to convert company object to json

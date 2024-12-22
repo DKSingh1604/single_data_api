@@ -33,8 +33,7 @@ class EmployeeScreen extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Center(
-                child:
-                    Text("Error fetching employee data: ${ErrorDescription}"),
+                child: Text("Error fetching employee data: $ErrorDescription"),
               );
             }
             if (snapshot.hasData) {
