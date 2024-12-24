@@ -5,7 +5,8 @@ import 'package:single_data_api/21December2024/models/company.dart';
 import 'package:single_data_api/21December2024/services/company_services.dart';
 
 class CreateCompany extends StatefulWidget {
-  const CreateCompany({super.key});
+  final Company? company;
+  const CreateCompany({super.key, this.company});
 
   @override
   State<CreateCompany> createState() => _CreateCompanyState();
@@ -15,10 +16,20 @@ class _CreateCompanyState extends State<CreateCompany> {
   //Text editing controllers
   // TextEditingController _idController = TextEditingController();
 
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _addressController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
-  GlobalKey<FormState> _key = GlobalKey();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final GlobalKey<FormState> _key = GlobalKey();
+
+  @override
+  void initState() {
+    if (widget.company != null) {
+      _nameController.text = widget.company!.companyName ?? "";
+      _addressController.text = widget.company!.companyAddress ?? "";
+      _phoneController.text = widget.company!.companyNumber ?? "";
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +37,9 @@ class _CreateCompanyState extends State<CreateCompany> {
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text("Add Company"),
+        title: Text(
+          widget.company == null ? "Create company" : "Update Company",
+        ),
         centerTitle: true,
       ),
       body: Form(
@@ -41,7 +54,9 @@ class _CreateCompanyState extends State<CreateCompany> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "Kindly fill the form to add your Company",
+                    widget.company == null
+                        ? "Kindly fill the form to create a company"
+                        : "Kindly fill the form to update the Company",
                     style: TextStyle(fontSize: 15),
                   ),
                 ),
@@ -49,6 +64,7 @@ class _CreateCompanyState extends State<CreateCompany> {
               SizedBox(
                 height: 20,
               ),
+
               //TEXTFIELDS
 
               // Padding(
@@ -75,6 +91,7 @@ class _CreateCompanyState extends State<CreateCompany> {
                     if (value!.length == 0) {
                       return ("Please enter company name");
                     }
+                    return null;
                   },
                   controller: _nameController,
                   decoration: InputDecoration(
@@ -92,6 +109,7 @@ class _CreateCompanyState extends State<CreateCompany> {
                     if (value!.length == 0) {
                       return ("Please enter company address");
                     }
+                    return null;
                   },
                   controller: _addressController,
                   decoration: InputDecoration(
@@ -109,6 +127,7 @@ class _CreateCompanyState extends State<CreateCompany> {
                     if (value!.length == 0) {
                       return ("Please enter company number");
                     }
+                    return null;
                   },
                   controller: _phoneController,
                   decoration: InputDecoration(
@@ -133,21 +152,33 @@ class _CreateCompanyState extends State<CreateCompany> {
                       companyNumber: _phoneController.text,
                       companyLogo: "https://logo.clearbit.com/list-manage.com",
                     );
-                    await CompanyServices().createCompany(newCompany);
+
+                    if (widget.company != null) {
+                      await CompanyServices()
+                          .updateCompany(newCompany, widget.company!.id!);
+                    } else {
+                      await CompanyServices().createCompany(newCompany);
+                    }
 
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text("Company Added Successfully"),
+                        content: Text(
+                          widget.company == null
+                              ? "Company created successfully"
+                              : "Company updated successfully",
+                        ),
                       ),
                     );
 
-                    Navigator.pop(context);
+                    Navigator.pop(context, true);
                   }
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Text(
-                    "Submit",
+                    widget.company == null
+                        ? "Create company"
+                        : "Update Company",
                     style: TextStyle(fontSize: 17),
                   ),
                 ),

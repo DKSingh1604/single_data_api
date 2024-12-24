@@ -6,7 +6,7 @@ class Company {
   String? companyLogo;
 
   Company({
-    required this.id,
+    this.id,
     required this.companyAddress,
     required this.companyLogo,
     required this.companyName,
@@ -25,7 +25,7 @@ class Company {
   //method to convert company object to json
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = {};
-    data['id'] = id;
+    // data['id'] = id;
     data['name'] = companyName;
     data['address'] = companyAddress;
     data['phone'] = companyNumber;

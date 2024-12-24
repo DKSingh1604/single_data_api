@@ -17,19 +17,35 @@ class _CompanyScreenState extends State<CompanyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => CreateCompany()),
-        ),
-        child: Text("ADD"),
+        onPressed: () async {
+          bool? isCompanyAdded = await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => CreateCompany()),
+          );
+
+          if (isCompanyAdded == true) {
+            setState(() {});
+          }
+        },
         backgroundColor: Colors.grey[400],
+        child: Text("ADD"),
       ),
       backgroundColor: Colors.amber[300],
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: const Text("COMPANIES"),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState(() {});
+            },
+            icon: Icon(Icons.refresh_rounded),
+          ),
+        ],
       ),
+
+      //B O D Y
       body: FutureBuilder(
         future: CompanyServices().getAllCompanies(),
         builder: (context, snapshot) {
@@ -49,21 +65,89 @@ class _CompanyScreenState extends State<CompanyScreen> {
                   child: ListTile(
                     contentPadding: EdgeInsets.symmetric(horizontal: 5),
                     tileColor: Colors.amber[300],
-                    leading: Image.network(data[index].companyLogo!),
+                    leading: Image.network(data[index].companyLogo ??
+                        "https://logo.clearbit.com/cbsnews.com"),
                     title: Text(
                       data[index].companyName ?? "No Name",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
                     ),
                     subtitle: Text(
                       data[index].companyNumber! +
                           ", " +
-                          data[index].companyAddress!,
+                          (data[index].companyAddress ?? "No Address"),
                     ),
                     trailing: Wrap(
                       spacing: 8,
                       children: [
-                        Icon(Icons.edit),
-                        Icon(Icons.delete),
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => CreateCompany(
+                                  company: data[index],
+                                ),
+                              ),
+                            );
+                          },
+                          icon: Icon(Icons.edit),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: Text(
+                                      "Are you sure you want to delete the company?",
+                                    ),
+                                    content: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          child: Text(
+                                            "No",
+                                            style: TextStyle(fontSize: 17),
+                                          ),
+                                        ),
+                                        TextButton(
+                                          onPressed: () async {
+                                            Navigator.pop(context);
+
+                                            await CompanyServices()
+                                                .deleteCompany(
+                                              data[index].id!,
+                                            );
+
+                                            setState(() {
+                                              data.removeAt(index);
+                                            });
+                                          },
+                                          child: Text(
+                                            "Yes",
+                                            style: TextStyle(fontSize: 17),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                });
+                          },
+                          icon: Icon(Icons.delete),
+                        ),
+                        IconButton(
+                          onPressed: () async {
+                            await CompanyServices().updateCompanyPartially(
+                                {'name': "Flutter Job"}, data[index].id!);
+                            setState(() {});
+                          },
+                          icon: Icon(Icons.insert_comment),
+                        ),
                       ],
                     ),
                   ),
