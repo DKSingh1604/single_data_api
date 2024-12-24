@@ -13,8 +13,8 @@ class CreateCompany extends StatefulWidget {
 }
 
 class _CreateCompanyState extends State<CreateCompany> {
-  //Text editing controllers
-  // TextEditingController _idController = TextEditingController();
+  //Text editing 
+  
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
